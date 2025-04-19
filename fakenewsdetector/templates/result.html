@@ -1,0 +1,23 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analysis Result</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Analysis Result</h1>
+        <p><strong>Verdict:</strong> {{ result.verdict }}</p>
+        <p><strong>Score:</strong> {{ result.score }}/100 (Higher means more likely fake)</p>
+        <ul>
+            <li>Sensational Words: {{ result.details.sensational }}</li>
+            <li>Excessive Punctuation: {{ result.details.punctuation }}</li>
+            <li>Spelling Errors: {{ result.details.spelling }}</li>
+        </ul>
+        <a href="{% url 'detector:index' %}" class="btn btn-secondary">Back</a>
+    </div>
+</body>
+</html>
