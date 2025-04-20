@@ -51,3 +51,12 @@ ul li {
 p strong {
     color: #075e54;
 }
+
+.btn-danger {
+    background-color: #ff3333; /* Bright red for delete */
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #cc0000; /* Darker red on hover */
+}

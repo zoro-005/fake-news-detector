@@ -10,6 +10,14 @@
 <body>
     <div class="container mt-5">
         <h1>Analysis Result</h1>
+        {% if result.from_url %}
+            <p><strong>Source:</strong> Analyzed from URL {{ result.url }}</p>
+        {% elif source_text and not result.url %}
+            <p><strong>Source:</strong> Manually entered text</p>
+        {% else %}
+            <p><strong>Source:</strong> Combined input (prioritized text)</p>
+        {% endif %}
+        <p><strong>Analyzed Text:</strong> {{ source_text|truncatechars:100 }}</p>
         <p><strong>Verdict:</strong> {{ result.verdict }}</p>
         <p><strong>Score:</strong> {{ result.score }}/100 (Higher means more likely fake)</p>
         <ul>

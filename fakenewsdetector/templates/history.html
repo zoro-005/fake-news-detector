@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>History</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Analysis History</h1>
+        {% for article in articles %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <p><strong>Text:</strong> {{ article.text|truncatechars:50 }}</p>
+                    <p><strong>Score:</strong> {{ article.score }}</p>
+                    <p><strong>Verdict:</strong> {{ article.verdict }}</p>
+                    <p><strong>Date:</strong> {{ article.timestamp }}</p>
+                    <a href="{% url 'detector:delete_article' article.id %}" class="btn btn-danger btn-sm">Delete</a>
+                </div>
+            </div>
+        {% empty %}
+            <p>No history yet.</p>
+        {% endfor %}
+        <a href="{% url 'detector:index' %}" class="btn btn-secondary">Back</a>
+    </div>
+</body>
+</html>
